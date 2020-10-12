@@ -26,7 +26,7 @@ module "vpc" {
 
 module "eks" {
     source                      = "./modules/eks"
-    eks_cluster_name            = "${var.project}-${var.environment}-${var.eks_cluster_name}"
+    eks_cluster_name            = var.eks_cluster_name
     environment                 = var.environment
     eks_cluster_role            = "RrodEKSClusterRole"
     subnet_id_in_vpc            = [ module.vpc.public_subnet_ids[0], module.vpc.public_subnet_ids[1], module.vpc.private_subnet_ids[0], module.vpc.private_subnet_ids[1]]
@@ -59,7 +59,7 @@ module "eks" {
 #    ec2_eks_cluster_role        = "EKS-ACCESS-TO-EC2-ROLE"
 #}
 
-#module "ecr"{
-#    source                      = "./modules/ecr"
-#    ecr_repo_name                   = "sample-web"
-#}
+module "ecr"{
+    source                      = "./modules/ecr"
+    ecr_repo_name                   = "sample-web"
+}
