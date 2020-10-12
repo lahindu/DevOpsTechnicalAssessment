@@ -27,7 +27,7 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
 }
 
 resource "aws_iam_role_policy_attachment" "AWSElasticLoadBalancingServiceRolePolicy" {
-    policy_arn            = "arn:aws:iam::aws:policy/aws-service-role/AWSElasticLoadBalancingServiceRolePolicy"
+    policy_arn            = "arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess"
     role                  = aws_iam_role.role_eks.name
 }
 

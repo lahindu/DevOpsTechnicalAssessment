@@ -40,12 +40,20 @@ pipeline {
         }
         stage('Ingress Setup') {
             steps {
-                println "Ingress Setup"
+                script {
+	                if ("$TERRA_COMMAND" == "SETUP") {
+                        println "Ingress Setup"
+                    }
+                }
             }
         }
         stage('Metrics Server Setup') {
             steps {
-                println "Metrics Server Setup"
+                script {
+	                if ("$TERRA_COMMAND" == "SETUP") {
+                        println "Metrics Server Setup"
+                    }
+                }
             }
         }
     }
