@@ -51,6 +51,7 @@ pipeline {
             steps {
                 script {
                     if ("$TERRA_COMMAND" == "SETUP") {
+                        sh 'kubectl create namespace monitoring'
                         sh 'kubectl apply -f https://raw.githubusercontent.com/lahindu/DevOpsTechnicalAssessmentMonitoring/main/elasticsearch.yaml'
                         sh 'kubectl apply -f https://raw.githubusercontent.com/lahindu/DevOpsTechnicalAssessmentMonitoring/main/prometheus.yaml'
                     }
