@@ -78,15 +78,6 @@ resource "aws_security_group_rule" "cluster_inbound_public" {
   to_port                  = 443
   type                     = "ingress"
 }
-resource "aws_security_group_rule" "prometheus_inbound_public" {
-  description              = "Allow Prometheus web interface public"
-  from_port                = 30100
-  protocol                 = "tcp"
-  security_group_id        = aws_security_group.eks_cluster.id
-  cidr_blocks              = ["0.0.0.0/0"]
-  to_port                  = 30100
-  type                     = "ingress"
-}
 
 # EKS Worker Node Group Security Group
 resource "aws_security_group" "eks_nodes" {
