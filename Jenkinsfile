@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                sh "/usr/local/bin/terraform plan -out=tfplan"
+                sh "/usr/local/bin/terraform plan -input=false"
             }
         }
         stage('Terraform Apply') {
