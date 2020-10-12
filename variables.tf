@@ -12,6 +12,11 @@ variable "environment" {
   default     = "PROD"
 }
 
+variable "project" {
+  description = "project name"
+  default     = "PROJECT-01"
+}
+
 variable "eks_cluster_name" {
   description = "EKS cluster Name"
   default     = "EKS-1"

@@ -32,13 +32,14 @@ resource "aws_iam_role_policy_attachment" "AWSElasticLoadBalancingServiceRolePol
 }
 
 resource "aws_eks_cluster" "eks" {
-    name                  = var.eks_cluster_name
-    role_arn              = aws_iam_role.role_eks.arn
+    name                   = var.eks_cluster_name
+    role_arn               = aws_iam_role.role_eks.arn
+    endpoint_public_access = true
     vpc_config {
-      subnet_ids          = var.subnet_id_in_vpc
+      subnet_ids           = var.subnet_id_in_vpc
     }
-    tags                  = {
-        Name              = var.eks_cluster_name
+    tags                   = {
+        Name               = var.eks_cluster_name
     }
 }
 
