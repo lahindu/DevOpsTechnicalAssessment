@@ -61,5 +61,5 @@ module "eks" {
 
 #module "ecr"{
 #    source                      = "./modules/ecr"
-#    repo_name                   = "sample-ecr"
+#    ecr_repo_name                   = "sample-web"
 #}
