@@ -2,3 +2,6 @@
 testproject
 terraform.tfstate
 terraform.tfstate.backup
+rds
+ec2
+temp
