@@ -41,9 +41,9 @@ module "eks" {
     asg_public_desired_size     = 2
     asg_public_max_size         = 2
     asg_public_min_size         = 2
-    asg_private_desired_size    = 1
-    asg_private_max_size        = 1
-    asg_private_min_size        = 1
+    asg_private_desired_size    = 2
+    asg_private_max_size        = 2
+    asg_private_min_size        = 2
 }
 
 #module "ec2"{
