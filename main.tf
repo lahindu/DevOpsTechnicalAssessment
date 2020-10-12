@@ -18,7 +18,7 @@ module "vpc" {
     source                      = "./modules/vpc"
     environment                 = var.environment
     vpc_cidr                    = "10.1.0.0/16"
-    eks_cluster_name            = var.eks_cluster_name
+    eks_cluster_name            = "${var.project}-${var.environment}-${var.eks_clustername}"
     project                     = var.project
     public_subnet_cidr_blocks   = var.public_subnet_cidr_blocks
     private_subnet_cidr_blocks  = var.private_subnet_cidr_blocks
@@ -26,7 +26,7 @@ module "vpc" {
 
 module "eks" {
     source                      = "./modules/eks"
-    eks_cluster_name            = var.eks_cluster_name
+    eks_cluster_name            = "${var.project}-${var.environment}-${var.eks_cluster_name}"
     environment                 = var.environment
     eks_cluster_role            = "RrodEKSClusterRole"
     subnet_id_in_vpc            = [ module.vpc.public_subnet_ids[0], module.vpc.public_subnet_ids[1], module.vpc.private_subnet_ids[0], module.vpc.private_subnet_ids[1]]

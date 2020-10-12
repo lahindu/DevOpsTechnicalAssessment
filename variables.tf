@@ -19,7 +19,7 @@ variable "project" {
 
 variable "eks_cluster_name" {
   description = "EKS cluster Name"
-  default     = "${var.project}-${var.environment}-${var.eks_cluster_name}"
+  default     = "EKS-1"
 }
 
 variable "public_subnet_cidr_blocks" {
