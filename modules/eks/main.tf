@@ -34,7 +34,6 @@ resource "aws_iam_role_policy_attachment" "AWSElasticLoadBalancingServiceRolePol
 resource "aws_eks_cluster" "eks" {
     name                   = var.eks_cluster_name
     role_arn               = aws_iam_role.role_eks.arn
-    endpoint_public_access = true
     vpc_config {
       subnet_ids           = var.subnet_id_in_vpc
     }
@@ -69,6 +68,15 @@ resource "aws_security_group_rule" "cluster_outbound" {
   source_security_group_id = aws_security_group.eks_nodes.id
   to_port                  = 65535
   type                     = "egress"
+}
+resource "aws_security_group_rule" "cluster_inbound_public" {
+  description              = "Allow cluster API Server to communicate public"
+  from_port                = 443
+  protocol                 = "tcp"
+  security_group_id        = aws_security_group.eks_cluster.id
+  cidr_blocks              = ["0.0.0.0/0"]
+  to_port                  = 65535
+  type                     = "ingress"
 }
 
 # EKS Worker Node Group Security Group
