@@ -42,7 +42,8 @@ pipeline {
             steps {
                 script {
 	                if ("$TERRA_COMMAND" == "SETUP") {
-                        println "Ingress Setup"
+                        aws eks --region ap-southeast-1 update-kubeconfig --name PROJECT-01-PROD-EKS-1
+                        sh 'kubectl apply -f ${WORKSPACE}/k8s-manifests/ingress-nginx-deploy.yml'
                     }
                 }
             }
@@ -51,7 +52,7 @@ pipeline {
             steps {
                 script {
 	                if ("$TERRA_COMMAND" == "SETUP") {
-                        println "Metrics Server Setup"
+                        sh 'kubectl apply -f ${WORKSPACE}/k8s-manifests/metrics-server-deploy-deploy.yml'
                     }
                 }
             }
