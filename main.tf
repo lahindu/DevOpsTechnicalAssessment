@@ -37,13 +37,13 @@ module "eks" {
     private_subnet_ids          = [ module.vpc.private_subnet_ids[0], module.vpc.private_subnet_ids[1]]
     ami_type                    = "AL2_x86_64"
     disk_size                   = 10
-    instance_types              = ["m4.xlarge"]
+    instance_types              = ["t3.medium"]
     asg_public_desired_size     = 2
     asg_public_max_size         = 2
     asg_public_min_size         = 2
-    asg_private_desired_size    = 0
-    asg_private_max_size        = 0
-    asg_private_min_size        = 0
+    asg_private_desired_size    = 1
+    asg_private_max_size        = 1
+    asg_private_min_size        = 1
 }
 
 #module "ec2"{
