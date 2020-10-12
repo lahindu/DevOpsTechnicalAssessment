@@ -42,7 +42,7 @@ pipeline {
             steps {
                 script {
 	                if ("$TERRA_COMMAND" == "SETUP") {
-                        aws eks --region ap-southeast-1 update-kubeconfig --name PROJECT-01-PROD-EKS-1
+                        sh 'aws eks --region ap-southeast-1 update-kubeconfig --name PROJECT-01-PROD-EKS-1'
                         sh 'kubectl apply -f k8s-manifests/ingress-nginx-deploy.yml'
                     }
                 }
