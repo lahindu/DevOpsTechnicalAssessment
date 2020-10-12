@@ -7,24 +7,12 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 println "Setup Environment or Delete Environment : ${TERRA_COMMAND}"
-                script {
-	                if ("$TERRA_COMMAND" == "SETUP") {
-                        sh "/usr/local/bin/terraform init"
-                    } else {
-                        println "Terraform Init skipping"
-                    }
-                }
+                sh "/usr/local/bin/terraform init"
             }
         }
         stage('Terraform Plan') {
             steps {
-                script {
-	                if ("$TERRA_COMMAND" == "SETUP") {
-                        sh "/usr/local/bin/terraform plan -input=false"
-                    } else {
-                        println "Terraform Plan skipping"
-                    }
-                }
+                sh "/usr/local/bin/terraform plan -input=false"
             }
         }
         stage('Terraform Apply') {
