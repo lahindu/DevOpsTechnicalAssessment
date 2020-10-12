@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Terraform Init') {
             steps {
-                sh "terraform init -input=false"
+                sh "/usr/local/bin/terraform init -input=false"
             }
         }
         stage('Terraform Plan') {
             steps {
-                sh "terraform plan -out=tfplan"
+                sh "/usr/local/bin/terraform plan -out=tfplan"
             }
         }
         stage('Terraform Apply') {
             steps {
-                sh "${env.TERRAFORM_HOME}/terraform apply -input=false"
+                sh "/usr/local/bin/terraform apply -input=false"
             }
         }
     }
