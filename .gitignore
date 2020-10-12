@@ -1,0 +1,4 @@
+.terraform
+testproject
+terraform.tfstate
+terraform.tfstate.backup
