@@ -5,3 +5,4 @@ terraform.tfstate.backup
 rds
 ec2
 temp
+k8s-manifests

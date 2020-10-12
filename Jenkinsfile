@@ -31,7 +31,6 @@ pipeline {
                 script {
 	                if ("$TERRA_COMMAND" == "SETUP") {
                         sh 'aws eks --region ap-southeast-1 update-kubeconfig --name PROJECT-01-PROD-EKS-1'
-                        //sh 'kubectl apply -f k8s-manifests/ingress-nginx-deploy.yml'
                         sh 'kubectl apply -f https://raw.githubusercontent.com/lahindu/DevOpsTechnicalAssessmentMonitoring/main/ingress-nginx-deploy.yml'
                     }
                 }
@@ -41,7 +40,6 @@ pipeline {
             steps {
                 script {
 	                if ("$TERRA_COMMAND" == "SETUP") {
-                        //sh 'kubectl apply -f k8s-manifests/metrics-server-deploy.yaml'
                         sh 'kubectl apply -f https://raw.githubusercontent.com/lahindu/DevOpsTechnicalAssessmentMonitoring/main/metrics-server-deploy.yaml'
                     }
                 }
@@ -51,8 +49,7 @@ pipeline {
             steps {
                 script {
                     if ("$TERRA_COMMAND" == "SETUP") {
-                        sh 'kubectl delete namespace monitoring --ignore-not-found'
-                        sh 'kubectl create namespace monitoring'
+                        sh 'kubectl apply -f https://raw.githubusercontent.com/lahindu/DevOpsTechnicalAssessmentMonitoring/main/namespace.yml'
                         sh 'kubectl apply -f https://raw.githubusercontent.com/lahindu/DevOpsTechnicalAssessmentMonitoring/main/elasticsearch.yaml'
                         sh 'kubectl apply -f https://raw.githubusercontent.com/lahindu/DevOpsTechnicalAssessmentMonitoring/main/prometheus.yaml'
                     }
