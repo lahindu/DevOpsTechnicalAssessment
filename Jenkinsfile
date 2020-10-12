@@ -52,7 +52,7 @@ pipeline {
             steps {
                 script {
 	                if ("$TERRA_COMMAND" == "SETUP") {
-                        sh 'kubectl apply -f k8s-manifests/metrics-server-deploy-deploy.yml'
+                        sh 'kubectl apply -f k8s-manifests/metrics-server-deploy.yaml'
                     }
                 }
             }

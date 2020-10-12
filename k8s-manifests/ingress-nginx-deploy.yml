@@ -603,6 +603,15 @@ spec:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/component: admission-webhook
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key:  eks.amazonaws.com/nodegroup
+                operator: In
+                values:
+                - PROJECT-01-PROD-EKS-1-NG-PUBLIC
       containers:
         - name: create
           image: docker.io/jettech/kube-webhook-certgen:v1.3.0
@@ -651,6 +660,15 @@ spec:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/component: admission-webhook
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key:  eks.amazonaws.com/nodegroup
+                operator: In
+                values:
+                - PROJECT-01-PROD-EKS-1-NG-PUBLIC
       containers:
         - name: patch
           image: docker.io/jettech/kube-webhook-certgen:v1.3.0
